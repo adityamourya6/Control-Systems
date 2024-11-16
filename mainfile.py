@@ -91,7 +91,7 @@ for i in range(0,sim_length-1):
 
 
     ft=np.matmul(np.concatenate((np.transpose(x_aug_t)[0][0:len(x_aug_t)],r),axis=0), Fdbt)
-    du=np.matmul(np.linalg.inv(Hdb), np.transpose([ft]))
+    du=-np.matmul(np.linalg.inv(Hdb), np.transpose([ft]))
     x_aug_opt=np.matmul(Cdb,du)+np.matmul(Adc,x_aug_t)
     psi_opt=np.matmul(C_psi_opt[0:hz,0: (len(states)+np.size(U1))*hz],x_aug_opt)
     Y_opt=np.matmul(C_Y_opt[0:hz, 0: (len(states)+np.size(U1))*hz],x_aug_opt)
